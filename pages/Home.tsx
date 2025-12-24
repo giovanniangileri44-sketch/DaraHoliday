@@ -38,15 +38,19 @@ const Home: React.FC = () => {
       <Navbar />
 
       {/* HERO SECTION */}
-      <section className="relative h-screen w-full flex flex-col items-center justify-center px-4 overflow-hidden">
+      <section className="relative h-[100dvh] w-full flex flex-col items-center justify-center px-4 overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/home-main.jpg"
-            className="w-full h-full object-cover opacity-60"
-            alt="Cinque Terre Background"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-black/30" />
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-80 scale-[1.25]"
+          >
+            <source src="/videos/marsala/hero.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         </div>
 
         {/* Content */}
@@ -55,7 +59,7 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white"
+            className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white"
           >
             Dara<span className="text-accent">Holiday</span> Apartments
           </MotionH1>
@@ -128,7 +132,7 @@ const Home: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+            <h2 className="text-3xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
               {t('welcome.title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto drop-shadow-md mb-10">

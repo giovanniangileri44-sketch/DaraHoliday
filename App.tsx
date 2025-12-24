@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import RoomDetail from './pages/RoomDetail';
 import Rooms from './pages/Rooms';
 import Contacts from './pages/Contacts';
+import Gallery from './pages/Gallery';
 import { useEffect } from 'react';
 
 const { HashRouter, Routes, Route, ScrollRestoration, useLocation } = ReactRouterDOM as any;
@@ -27,6 +28,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/camere" element={<Rooms />} />
         <Route path="/camere/:id" element={<RoomDetail />} />
+        <Route path="/galleria" element={<Gallery />} />
         <Route path="/contatti" element={<Contacts />} />
         <Route path="/room/:id" element={<RoomDetail />} />
       </Routes>

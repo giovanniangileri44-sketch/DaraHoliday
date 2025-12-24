@@ -37,7 +37,7 @@ const Rooms: React.FC = () => {
         {/* Header Pagina */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
           <div>
-            <h1 className="text-4xl font-bold text-black mb-2">Le Nostre Camere</h1>
+            <h1 className="text-2xl md:text-4xl font-bold text-black mb-2">Le Nostre Camere</h1>
             <p className="text-black/80 font-medium">Trova la soluzione perfetta per le tue esigenze. {filtered.length} camera{filtered.length !== 1 ? 'e' : ''} disponibile{filtered.length !== 1 ? '' : 's'}.</p>
           </div>
 
@@ -64,7 +64,8 @@ const Rooms: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-8"
+
           >
             {filtered.map(room => (
               <RoomCard key={room.id} room={room} />

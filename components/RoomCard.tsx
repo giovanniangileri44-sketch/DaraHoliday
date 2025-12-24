@@ -34,35 +34,35 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
         </Link>
 
         {/* Price Tag Overlay */}
-        <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
-          <span className="text-sm font-semibold text-white">{t('common.price_variable')}</span>
+        <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-black/60 backdrop-blur-md px-2 py-1 md:px-3 md:py-1.5 rounded-full border border-white/10">
+          <span className="text-xs md:text-sm font-semibold text-white">{t('common.price_variable')}</span>
         </div>
       </div>
 
       {/* Content */}
-      <div className="flex flex-col gap-2 px-1">
-        <div className="flex flex-col items-start gap-1">
-          <h3 className="text-xl font-bold text-black tracking-tight">{room.name}</h3>
-          <span className="text-sm uppercase tracking-wider font-semibold text-gray-700">{room.type}</span>
+      <div className="flex flex-col gap-1 md:gap-2 px-1">
+        <div className="flex flex-col items-start gap-0.5 md:gap-1">
+          <h3 className="text-sm md:text-xl font-bold text-black tracking-tight leading-tight">{room.name}</h3>
+          <span className="text-[10px] md:text-sm uppercase tracking-wider font-semibold text-gray-700">{room.type}</span>
         </div>
 
-        <p className="text-sm text-gray-800 line-clamp-2">
+        <p className="text-xs md:text-sm text-gray-800 line-clamp-2">
           {room.capacity} Persone &bull; {room.size}m²
         </p>
 
-        <div className="flex gap-4 mt-2 border-t border-white/5 pt-4">
+        <div className="flex gap-2 md:gap-4 mt-1 md:mt-2 border-t border-white/5 pt-2 md:pt-4">
           {/* Book Button */}
           <a
             href="https://direct-book.com/properties/daraholidayapartments"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-accent hover:bg-[#bfa030] text-white text-sm font-medium px-4 py-2 rounded-full transition-colors"
+            className="bg-accent hover:bg-[#bfa030] text-white text-[10px] md:text-sm font-medium px-2 py-1 md:px-4 md:py-2 rounded-full transition-colors"
           >
             {t('translation:navbar.book')}
           </a>
 
-          <Link to={`/room/${room.id}`} className="ml-auto text-sm font-medium text-accent hover:underline flex items-center gap-1">
-            Dettagli <ArrowRight className="w-3 h-3" />
+          <Link to={`/room/${room.id}`} className="ml-auto text-[10px] md:text-sm font-medium text-accent hover:underline flex items-center gap-1">
+            Dettagli <ArrowRight className="w-3 h-3 md:w-3 md:h-3" />
           </Link>
         </div>
       </div>

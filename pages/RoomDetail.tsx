@@ -172,7 +172,7 @@ const RoomDetail: React.FC = () => {
                 {/* Back Button (Floating) */}
                 <div className="absolute top-24 left-6 z-20" onClick={(e) => e.stopPropagation()}>
                     <Link to="/camere" className="inline-flex items-center text-white/80 hover:text-accent transition-colors bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                        <ArrowLeft className="w-4 h-4 mr-2" /> Torna alle camere
+                        <ArrowLeft className="w-4 h-4 mr-2" /> {t('navbar.rooms')}
                     </Link>
                 </div>
             </section>
@@ -183,9 +183,9 @@ const RoomDetail: React.FC = () => {
                 <div className="mb-12">
                     <div className="flex flex-col md:flex-row justify-between items-end gap-6">
                         <div>
-                            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-2 drop-shadow-lg">{room.name}</h1>
+                            <h1 className="text-3xl md:text-6xl font-bold tracking-tight text-white mb-2 drop-shadow-lg">{room.name}</h1>
                             <div className="flex items-center gap-4 text-textMuted">
-                                <span className="flex items-center gap-1"><User className="w-4 h-4" /> {room.capacity} Ospiti</span>
+                                <span className="flex items-center gap-1"><User className="w-4 h-4" /> {room.capacity} {t('common.guests')}</span>
                                 <span className="flex items-center gap-1"><Maximize className="w-4 h-4" /> {room.size}m²</span>
                             </div>
                         </div>
@@ -200,7 +200,7 @@ const RoomDetail: React.FC = () => {
                                 } else {
                                     navigator.clipboard.writeText(window.location.href);
                                     // Optional: You could show a toast here if you have a toast system, for now keeping it simple as requested
-                                    alert('Link copiato negli appunti!');
+                                    alert('Link copied to clipboard!');
                                 }
                             }}
                             className="p-3 rounded-full bg-surface border border-white/10 hover:bg-white/10 transition-colors"
@@ -214,137 +214,141 @@ const RoomDetail: React.FC = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
                     {/* LEFT COLUMN: Details */}
-                    <div className="lg:col-span-2 space-y-10">
+                    <div className="lg:col-span-2 space-y-10 order-last lg:order-none">
 
                         {/* Description */}
                         <section>
-                            <h3 className="text-2xl font-bold mb-4 text-white">Descrizione</h3>
+                            <h3 className="text-2xl font-bold mb-4 text-white">{t('room_detail.description_title')}</h3>
                             <p className="text-textMuted leading-relaxed text-lg">
-                                {room.description}
+                                {t('room_detail.description_template', {
+                                    type: room.type,
+                                    floor: room.floor === 0 ? t('common.ground_floor') : t('common.first_floor'),
+                                    outdoor: room.outdoor === 'Terrazza' ? t('common.terrace') : (room.outdoor === 'Balcone' ? t('common.balcony') : room.outdoor)
+                                })}
                             </p>
                         </section>
 
                         {/* Amenities */}
                         {/* Amenities */}
                         <section>
-                            <h3 className="text-2xl font-bold mb-6 text-white">Servizi Inclusi</h3>
+                            <h3 className="text-2xl font-bold mb-6 text-white">{t('room_detail.amenities_title')}</h3>
 
                             <div className="space-y-8">
                                 {/* Cucina & Cibo */}
                                 <div>
-                                    <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">Cucina & Cibo</h4>
+                                    <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">{t('room_detail.kitchen')}</h4>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Utensils className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Cucina (Spazio preparazione)</span>
+                                            <span className="font-medium text-sm">{t('amenities.kitchen_space')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Refrigerator className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Frigorifero & Freezer</span>
+                                            <span className="font-medium text-sm">{t('amenities.fridge')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Coffee className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Macchina del caffè & Bollitore</span>
+                                            <span className="font-medium text-sm">{t('amenities.coffee_machine')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Flame className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Fornelli (Induzione) & Forno</span>
+                                            <span className="font-medium text-sm">{t('amenities.stove')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Microwave className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Forno a microonde</span>
+                                            <span className="font-medium text-sm">{t('amenities.microwave')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Wine className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Calici, Piatti e posate</span>
+                                            <span className="font-medium text-sm">{t('amenities.dishes')}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Comfort & Clima */}
                                 <div>
-                                    <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">Comfort & Clima</h4>
+                                    <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">{t('room_detail.comfort')}</h4>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Snowflake className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Aria condizionata</span>
+                                            <span className="font-medium text-sm">{t('amenities.ac')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <ThermometerSun className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Riscaldamento</span>
+                                            <span className="font-medium text-sm">{t('amenities.heating')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Wifi className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Wi-Fi & Pocket Wi-Fi</span>
+                                            <span className="font-medium text-sm">{t('amenities.wifi')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Tv className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">TV</span>
+                                            <span className="font-medium text-sm">{t('amenities.tv')}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Bagno & Lavanderia */}
                                 <div>
-                                    <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">Bagno & Lavanderia</h4>
+                                    <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">{t('room_detail.bathroom')}</h4>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Droplet className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Bidet, Sapone, Shampoo</span>
+                                            <span className="font-medium text-sm">{t('amenities.bidet')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Wind className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Asciugacapelli</span>
+                                            <span className="font-medium text-sm">{t('amenities.hairdryer')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <WashingMachine className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Lavatrice</span>
+                                            <span className="font-medium text-sm">{t('amenities.washing_machine')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Shirt className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Grucce & Spazio abiti</span>
+                                            <span className="font-medium text-sm">{t('amenities.hangers')}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Sicurezza */}
                                 <div>
-                                    <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">Sicurezza</h4>
+                                    <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">{t('room_detail.security')}</h4>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <ShieldAlert className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Rilevatore CO</span>
+                                            <span className="font-medium text-sm">{t('amenities.co_detector')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <FlameKindling className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Allarme & Estintore</span>
+                                            <span className="font-medium text-sm">{t('amenities.alarm')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <BriefcaseMedical className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Kit pronto soccorso</span>
+                                            <span className="font-medium text-sm">{t('amenities.first_aid')}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Accessori */}
                                 <div>
-                                    <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">Accessori</h4>
+                                    <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">{t('room_detail.accessories')}</h4>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Key className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Ingresso privato</span>
+                                            <span className="font-medium text-sm">{t('amenities.private_entrance')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Car className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Parcheggio gratuito</span>
+                                            <span className="font-medium text-sm">{t('amenities.parking')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Briefcase className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Spazio lavoro</span>
+                                            <span className="font-medium text-sm">{t('amenities.workspace')}</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
                                             <Home className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">Casa singolo piano</span>
+                                            <span className="font-medium text-sm">{t('amenities.single_floor')}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -357,19 +361,19 @@ const RoomDetail: React.FC = () => {
                             <div className="p-6 rounded-3xl bg-surface/50 border border-white/5">
                                 <div className="flex items-center gap-3 mb-2 text-accent">
                                     <Star className="w-5 h-5 fill-accent" />
-                                    <span className="font-bold">Superhost</span>
+                                    <span className="font-bold">{t('common.superhost')}</span>
                                 </div>
                                 <p className="text-sm text-textMuted">
-                                    DaraHoliday è un Superhost impegnato a fornire un soggiorno eccezionale.
+                                    {t('common.superhost_desc')}
                                 </p>
                             </div>
                             <div className="p-6 rounded-3xl bg-surface/50 border border-white/5">
                                 <div className="flex items-center gap-3 mb-2 text-accent">
                                     <Maximize className="w-5 h-5" />
-                                    <span className="font-bold">Spazioso</span>
+                                    <span className="font-bold">{t('common.spacious')}</span>
                                 </div>
                                 <p className="text-sm text-textMuted">
-                                    Questo alloggio offre {room.size}m² di spazio per il tuo comfort.
+                                    {t('common.spacious_desc', { size: room.size })}
                                 </p>
                             </div>
                         </section>
@@ -377,29 +381,29 @@ const RoomDetail: React.FC = () => {
                     </div>
 
                     {/* RIGHT COLUMN: Sticky Sidebar */}
-                    <div className="relative">
-                        <div className="sticky top-28 bg-surface rounded-3xl p-6 border border-white/10 shadow-2xl">
-                            <div className="flex justify-between items-end mb-6">
+                    <div className="relative order-first lg:order-none">
+                        <div className="sticky top-28 bg-surface rounded-3xl p-5 md:p-6 border border-white/10 shadow-2xl">
+                            <div className="flex justify-between items-end mb-4 md:mb-6">
                                 <div>
-                                    <span className="text-xl font-bold text-white uppercase">{t('common.price_variable')}</span>
+                                    <span className="text-lg md:text-xl font-bold text-white uppercase">{t('common.price_variable')}</span>
                                 </div>
                                 <span className="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded-full border border-green-500/20">
                                     {t('common.available')}
                                 </span>
                             </div>
 
-                            <div className="space-y-4 mb-8">
-                                <div className="flex justify-between py-3 border-b border-white/10 text-sm">
+                            <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
+                                <div className="flex justify-between py-2 md:py-3 border-b border-white/10 text-sm">
                                     <span className="text-textMuted">{t('common.guests')}</span>
-                                    <span className="text-white font-medium">{room.capacity} Persone</span>
+                                    <span className="text-white font-medium">{room.capacity} {t('common.guests')}</span>
                                 </div>
-                                <div className="flex justify-between py-3 border-b border-white/10 text-sm">
-                                    <span className="text-textMuted">Pulizia</span>
-                                    <span className="text-white font-medium">Inclusa</span>
+                                <div className="flex justify-between py-2 md:py-3 border-b border-white/10 text-sm">
+                                    <span className="text-textMuted">{t('common.cleanliness')}</span>
+                                    <span className="text-white font-medium">{t('common.included')}</span>
                                 </div>
-                                <div className="flex justify-between py-3 border-b border-white/10 text-sm">
-                                    <span className="text-textMuted">Cancellazione</span>
-                                    <span className="text-white font-medium">Gratuita entro 48h</span>
+                                <div className="flex justify-between py-2 md:py-3 border-b border-white/10 text-sm">
+                                    <span className="text-textMuted">{t('common.cancellation')}</span>
+                                    <span className="text-white font-medium">{t('common.free_cancellation')}</span>
                                 </div>
                             </div>
 
@@ -409,13 +413,13 @@ const RoomDetail: React.FC = () => {
                                 rel="noopener noreferrer"
                                 className="block w-full"
                             >
-                                <button className="w-full bg-accent hover:bg-[#bfa030] text-surface font-bold text-lg py-4 rounded-full transition-all hover:scale-[1.02] shadow-lg active:scale-95">
+                                <button className="w-full bg-accent hover:bg-[#bfa030] text-surface font-bold text-lg py-3 md:py-4 rounded-full transition-all hover:scale-[1.02] shadow-lg active:scale-95">
                                     {t('common.discover_price')}
                                 </button>
                             </a>
 
                             <p className="text-center text-xs text-textMuted mt-4">
-                                Miglior prezzo garantito prenotando direttamente.
+                                {t('common.best_price')}
                             </p>
                         </div>
                     </div>

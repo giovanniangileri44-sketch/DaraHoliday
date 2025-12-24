@@ -6,45 +6,45 @@ import { useTranslation } from 'react-i18next';
 const reviews = [
     {
         id: 1,
-        author: "Marco Rossi",
+        author: "Giovanni Angileri",
         rating: 5,
-        text: "Soggiorno indimenticabile! L'appartamento era pulitissimo e dotato di ogni comfort. La posizione è perfetta per visitare Marsala.",
-        date: "2 settimane fa"
+        text: "Un gioiello nel cuore di Marsala! L'appartamento è curato nei minimi dettagli, pulitissimo e con un arredamento moderno che ti fa sentire subito a casa. La posizione è perfetta per visitare il centro e le saline al tramonto. Torneremo sicuramente!",
+        date: "5 giorni fa"
     },
     {
         id: 2,
-        author: "Sophie Dubois",
+        author: "Alessandro Corrao",
         rating: 5,
-        text: "Magnifique! The view was breathtaking and the host was very welcoming. Highly recommended for anyone visiting Sicily.",
-        date: "1 mese fa"
+        text: "Ottima vacanza, alloggio molto comodo e confortevole",
+        date: "4 settimane fa"
     },
     {
         id: 3,
-        author: "John Smith",
+        author: "Joseph Culicchia",
         rating: 5,
-        text: "Great location, modern facilities, and excellent service. We loved the attention to detail. Will definitely come back!",
-        date: "3 settimane fa"
+        text: "Ho soggiornato in questo appartamento per le vacanze e ho avuto un'esperienza davvero eccellente. Il posto è pulito, moderno e dotato di tutto il necessario per un soggiorno confortevole. La cucina è ben fornita, il letto è molto comodo.",
+        date: "4 settimane fa"
     },
     {
         id: 4,
-        author: "Giulia Bianchi",
+        author: "Alessandro Putzolu",
         rating: 5,
-        text: "Tutto perfetto. Dalla pulizia all'accoglienza. Un vero gioiello nel cuore di Marsala. Grazie di tutto!",
-        date: "2 mesi fa"
+        text: "Valutazione 5 stelle.",
+        date: "4 settimane fa"
     },
     {
         id: 5,
-        author: "Hans Müller",
-        rating: 4,
-        text: "Sehr schöne Wohnung, sauber und gut ausgestattet. Die Lage ist zentral. Gerne wieder.",
-        date: "1 mese fa"
+        author: "Pippo Licata",
+        rating: 5,
+        text: "Valutazione 5 stelle.",
+        date: "3 mesi fa"
     },
     {
         id: 6,
-        author: "Elena Costa",
+        author: "Giuseppe",
         rating: 5,
-        text: "Esperienza fantastica. L'arredamento è curato nei minimi dettagli e la pulizia è impeccabile. Consigliatissimo!",
-        date: "1 settimana fa"
+        text: "Valutazione 5 stelle.",
+        date: "3 mesi fa"
     }
 ];
 
