@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import Navbar from '../components/Navbar';
 import RoomCard from '../components/RoomCard';
 import { rooms } from '../data/rooms';
 
 const Rooms: React.FC = () => {
+  const { t } = useTranslation();
   const [filterCapacity, setFilterCapacity] = useState<'all' | number>('all');
 
   const filtered = rooms.filter(r => filterCapacity === 'all' || r.capacity === filterCapacity);
@@ -22,23 +23,15 @@ const Rooms: React.FC = () => {
         <div className="absolute inset-0 bg-white/70" />
       </div>
 
-      {/* Header semplice */}
-      <div className="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-black hover:text-[#D4AF37] transition-colors">
-            <ArrowLeft size={20} />
-            <span className="font-medium">Torna alla home</span>
-          </Link>
-        </div>
-      </div>
+      <Navbar variant="light" />
 
-      <div className="relative z-10 pt-12 px-6 pb-20 max-w-7xl mx-auto">
+      <div className="relative z-10 pt-24 px-6 pb-20 max-w-7xl mx-auto">
 
         {/* Header Pagina */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
           <div>
-            <h1 className="text-2xl md:text-4xl font-bold text-black mb-2">Le Nostre Camere</h1>
-            <p className="text-black/80 font-medium">Trova la soluzione perfetta per le tue esigenze. {filtered.length} camera{filtered.length !== 1 ? 'e' : ''} disponibile{filtered.length !== 1 ? '' : 's'}.</p>
+            <h1 className="text-2xl md:text-4xl font-bold text-black mb-2">{t('rooms_page.title')}</h1>
+            <p className="text-black/80 font-medium">{t('rooms_page.subtitle')}</p>
           </div>
 
           {/* Filtri a pillola */}
@@ -52,7 +45,7 @@ const Rooms: React.FC = () => {
                   : 'text-black hover:bg-gray-50'
                   }`}
               >
-                {cap === 'all' ? 'Tutte' : `${cap} Ospiti`}
+                {cap === 'all' ? t('rooms_page.filter_all') : t('rooms_page.filter_guests', { count: cap })}
               </button>
             ))}
           </div>
@@ -73,7 +66,7 @@ const Rooms: React.FC = () => {
           </motion.div>
         ) : (
           <div className="text-center py-20 text-gray-600">
-            <p className="text-lg">Nessuna camera trovata con questo filtro.</p>
+            <p className="text-lg">{t('rooms_page.no_results')}</p>
           </div>
         )}
       </div>

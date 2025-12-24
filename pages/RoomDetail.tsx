@@ -237,30 +237,30 @@ const RoomDetail: React.FC = () => {
                                 {/* Cucina & Cibo */}
                                 <div>
                                     <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">{t('room_detail.kitchen')}</h4>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Utensils className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.kitchen_space')}</span>
+                                    <div className="grid grid-cols-2 gap-3 md:gap-4">
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Utensils className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.kitchen_space')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Refrigerator className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.fridge')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Refrigerator className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.fridge')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Coffee className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.coffee_machine')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Coffee className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.coffee_machine')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Flame className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.stove')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Flame className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.stove')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Microwave className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.microwave')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Microwave className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.microwave')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Wine className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.dishes')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Wine className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.dishes')}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -268,22 +268,22 @@ const RoomDetail: React.FC = () => {
                                 {/* Comfort & Clima */}
                                 <div>
                                     <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">{t('room_detail.comfort')}</h4>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Snowflake className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.ac')}</span>
+                                    <div className="grid grid-cols-2 gap-3 md:gap-4">
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.ac')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <ThermometerSun className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.heating')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <ThermometerSun className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.heating')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Wifi className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.wifi')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Wifi className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.wifi')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Tv className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.tv')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Tv className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.tv')}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -291,22 +291,22 @@ const RoomDetail: React.FC = () => {
                                 {/* Bagno & Lavanderia */}
                                 <div>
                                     <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">{t('room_detail.bathroom')}</h4>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Droplet className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.bidet')}</span>
+                                    <div className="grid grid-cols-2 gap-3 md:gap-4">
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Droplet className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.bidet')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Wind className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.hairdryer')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Wind className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.hairdryer')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <WashingMachine className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.washing_machine')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <WashingMachine className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.washing_machine')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Shirt className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.hangers')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Shirt className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.hangers')}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -314,18 +314,18 @@ const RoomDetail: React.FC = () => {
                                 {/* Sicurezza */}
                                 <div>
                                     <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">{t('room_detail.security')}</h4>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <ShieldAlert className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.co_detector')}</span>
+                                    <div className="grid grid-cols-2 gap-3 md:gap-4">
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <ShieldAlert className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.co_detector')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <FlameKindling className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.alarm')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <FlameKindling className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.alarm')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <BriefcaseMedical className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.first_aid')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <BriefcaseMedical className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.first_aid')}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -333,22 +333,22 @@ const RoomDetail: React.FC = () => {
                                 {/* Accessori */}
                                 <div>
                                     <h4 className="text-lg font-semibold text-white/90 mb-4 px-1">{t('room_detail.accessories')}</h4>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Key className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.private_entrance')}</span>
+                                    <div className="grid grid-cols-2 gap-3 md:gap-4">
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Key className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.private_entrance')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Car className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.parking')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Car className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.parking')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Briefcase className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.workspace')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Briefcase className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.workspace')}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 p-4 rounded-2xl bg-surface border border-white/5">
-                                            <Home className="w-5 h-5 text-accent" />
-                                            <span className="font-medium text-sm">{t('amenities.single_floor')}</span>
+                                        <div className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface border border-white/5">
+                                            <Home className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                                            <span className="font-medium text-xs md:text-sm">{t('amenities.single_floor')}</span>
                                         </div>
                                     </div>
                                 </div>

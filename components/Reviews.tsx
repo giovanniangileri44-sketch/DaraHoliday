@@ -60,7 +60,7 @@ const Reviews: React.FC = () => {
                     viewport={{ once: true }}
                     className="text-3xl md:text-5xl font-bold text-white mb-4"
                 >
-                    Cosa dicono di noi
+                    {t('reviews.title')}
                 </motion.h2>
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
@@ -69,7 +69,7 @@ const Reviews: React.FC = () => {
                     transition={{ delay: 0.2 }}
                     className="text-textMuted text-lg"
                 >
-                    Le esperienze dei nostri ospiti
+                    {t('reviews.subtitle')}
                 </motion.p>
             </div>
 

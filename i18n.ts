@@ -87,6 +87,17 @@ const resources = {
                     apartments: 'Appartamenti',
                     renders: 'Render'
                 }
+            },
+            reviews: {
+                title: 'Cosa dicono di noi',
+                subtitle: 'Le esperienze dei nostri ospiti'
+            },
+            rooms_page: {
+                title: 'Le Nostre Camere',
+                subtitle: 'Trova la soluzione perfetta per le tue esigenze.',
+                filter_all: 'Tutte',
+                filter_guests: '{{count}} Ospiti',
+                no_results: 'Nessuna camera trovata con questo filtro.'
             }
         }
     },
@@ -173,6 +184,17 @@ const resources = {
                     apartments: 'Apartments',
                     renders: 'Renders'
                 }
+            },
+            reviews: {
+                title: 'What they say about us',
+                subtitle: 'Our guests\' experiences'
+            },
+            rooms_page: {
+                title: 'Our Rooms',
+                subtitle: 'Find the perfect solution for your needs.',
+                filter_all: 'All',
+                filter_guests: '{{count}} Guests',
+                no_results: 'No rooms found with this filter.'
             }
         }
     },
@@ -259,6 +281,17 @@ const resources = {
                     apartments: 'Appartements',
                     renders: 'Renders'
                 }
+            },
+            reviews: {
+                title: 'Ce qu\'ils disent de nous',
+                subtitle: 'Les expériences de nos invités'
+            },
+            rooms_page: {
+                title: 'Nos Chambres',
+                subtitle: 'Trouvez la solution parfaite pour vos besoins.',
+                filter_all: 'Toutes',
+                filter_guests: '{{count}} Invités',
+                no_results: 'Aucune chambre trouvée avec ce filtre.'
             }
         }
     },
@@ -345,6 +378,17 @@ const resources = {
                     apartments: 'Wohnungen',
                     renders: 'Renders'
                 }
+            },
+            reviews: {
+                title: 'Was sie über uns sagen',
+                subtitle: 'Die Erfahrungen unserer Gäste'
+            },
+            rooms_page: {
+                title: 'Unsere Zimmer',
+                subtitle: 'Finden Sie die perfekte Lösung für Ihre Bedürfnisse.',
+                filter_all: 'Alle',
+                filter_guests: '{{count}} Gäste',
+                no_results: 'Keine Zimmer mit diesem Filter gefunden.'
             }
         }
     },
@@ -431,6 +475,17 @@ const resources = {
                     apartments: 'Apartamentos',
                     renders: 'Renders'
                 }
+            },
+            reviews: {
+                title: 'Lo que dicen de nosotros',
+                subtitle: 'Las experiencias de nuestros huéspedes'
+            },
+            rooms_page: {
+                title: 'Nuestras Habitaciones',
+                subtitle: 'Encuentra la solución perfecta para tus necesidades.',
+                filter_all: 'Todas',
+                filter_guests: '{{count}} Huéspedes',
+                no_results: 'No se encontraron habitaciones con este filtro.'
             }
         }
     }

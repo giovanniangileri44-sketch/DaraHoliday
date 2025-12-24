@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as ReactRouterDOM from 'react-router-dom';
-import { Globe, Menu, X, Check, Search } from 'lucide-react';
+import { Globe, Menu, X, Check, Home, BedDouble, Image, Phone, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const { Link, useLocation } = ReactRouterDOM as any;
@@ -13,69 +13,6 @@ const CORE_LANGUAGES = [
   { code: 'es', label: 'Español' }
 ];
 
-const ALL_LANGUAGES = [
-  ...CORE_LANGUAGES,
-  { code: 'sq', label: 'Albanian' },
-  { code: 'ar', label: 'Arabic' },
-  { code: 'hy', label: 'Armenian' },
-  { code: 'az', label: 'Azerbaijani' },
-  { code: 'eu', label: 'Basque' },
-  { code: 'be', label: 'Belarusian' },
-  { code: 'bg', label: 'Bulgarian' },
-  { code: 'ca', label: 'Catalan' },
-  { code: 'zh-CN', label: 'Chinese (Simplified)' },
-  { code: 'zh-TW', label: 'Chinese (Traditional)' },
-  { code: 'hr', label: 'Croatian' },
-  { code: 'cs', label: 'Czech' },
-  { code: 'da', label: 'Danish' },
-  { code: 'nl', label: 'Dutch' },
-  { code: 'et', label: 'Estonian' },
-  { code: 'tl', label: 'Filipino' },
-  { code: 'fi', label: 'Finnish' },
-  { code: 'gl', label: 'Galician' },
-  { code: 'ka', label: 'Georgian' },
-  { code: 'el', label: 'Greek' },
-  { code: 'ht', label: 'Haitian Creole' },
-  { code: 'he', label: 'Hebrew' },
-  { code: 'hi', label: 'Hindi' },
-  { code: 'hu', label: 'Hungarian' },
-  { code: 'is', label: 'Icelandic' },
-  { code: 'id', label: 'Indonesian' },
-  { code: 'ga', label: 'Irish' },
-  { code: 'ja', label: 'Japanese' },
-  { code: 'ko', label: 'Korean' },
-  { code: 'lv', label: 'Latvian' },
-  { code: 'lt', label: 'Lithuanian' },
-  { code: 'mk', label: 'Macedonian' },
-  { code: 'ms', label: 'Malay' },
-  { code: 'mt', label: 'Maltese' },
-  { code: 'no', label: 'Norwegian' },
-  { code: 'fa', label: 'Persian' },
-  { code: 'pl', label: 'Polish' },
-  { code: 'pt', label: 'Portuguese' },
-  { code: 'ro', label: 'Romanian' },
-  { code: 'ru', label: 'Russian' },
-  { code: 'sr', label: 'Serbian' },
-  { code: 'sk', label: 'Slovak' },
-  { code: 'sl', label: 'Slovenian' },
-  { code: 'sw', label: 'Swahili' },
-  { code: 'sv', label: 'Swedish' },
-  { code: 'th', label: 'Thai' },
-  { code: 'tr', label: 'Turkish' },
-  { code: 'uk', label: 'Ukrainian' },
-  { code: 'ur', label: 'Urdu' },
-  { code: 'vi', label: 'Vietnamese' },
-  { code: 'cy', label: 'Welsh' },
-  { code: 'yi', label: 'Yiddish' }
-];
-
-declare global {
-  interface Window {
-    google: any;
-    googleTranslateElementInit: () => void;
-  }
-}
-
 interface NavbarProps {
   variant?: 'dark' | 'light';
 }
@@ -84,113 +21,34 @@ const Navbar: React.FC<NavbarProps> = ({ variant = 'dark' }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  // Use state to track current language to support both i18n and Google Translate
-  const [currentLang, setCurrentLang] = useState('it');
 
   const { t, i18n } = useTranslation();
   const location = useLocation();
 
   useEffect(() => {
-    // Sync local state with i18n initial state
-    setCurrentLang(i18n.language);
-
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
 
-    // Initialize Google Translate
-    window.googleTranslateElementInit = () => {
-      new window.google.translate.TranslateElement(
-        {
-          pageLanguage: 'it',
-          autoDisplay: false,
-          layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
-        },
-        'google_translate_element'
-      );
-    };
-
-    const addScript = document.createElement('script');
-    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
-    document.body.appendChild(addScript);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  const triggerGoogleTranslate = (langCode: string) => {
-    // 1. Set i18n to Italian so Google Translate has a consistent source
-    i18n.changeLanguage('it');
-
-    // 2. Set the Google Translate cookie manually to "source/destination"
-    // The format is usually /auto/target or /source/target. 
-    // We force source=it to match our base.
-    const cookieValue = `/it/${langCode}`;
-    document.cookie = `googtrans=${cookieValue}; path=/`;
-    document.cookie = `googtrans=${cookieValue}; path=/; domain=${window.location.hostname}`;
-
-    // 3. Reload the page to ensure Google Translate script runs on the fresh content
-    // This is the most reliable way to force Google Translate on an SPA
-    window.location.reload();
-  };
-
-  const clearGoogleTranslate = () => {
-    // Clear cookies for root and domain
-    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname}`;
-    document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${window.location.hostname}`;
-  };
-
   const toggleLanguage = (langCode: string) => {
-    const isCore = CORE_LANGUAGES.some(l => l.code === langCode);
-
-    // Update local state
-    setCurrentLang(langCode);
+    i18n.changeLanguage(langCode);
     setIsLangMenuOpen(false);
-
-    if (isCore) {
-      // If we are switching to a core language, we want to use i18n.
-      // We must ensure Google Translate is OFF.
-
-      // Check if Google Translate cookie exists
-      const cookies = document.cookie.split(';');
-      const hasGoogTrans = cookies.some(c => c.trim().startsWith('googtrans='));
-
-      if (hasGoogTrans) {
-        clearGoogleTranslate();
-        // We need to reload to get rid of Google Translate's DOM changes
-        // After reload, we need to apply the core language. 
-        // We can save the desired language in localStorage to apply it on init.
-        localStorage.setItem('dara_preferred_lang', langCode);
-        window.location.reload();
-        return;
-      }
-
-      i18n.changeLanguage(langCode);
-      localStorage.setItem('dara_preferred_lang', langCode);
-    } else {
-      // Switching to a non-core language: Use Google Translate
-      triggerGoogleTranslate(langCode);
-    }
+    localStorage.setItem('dara_preferred_lang', langCode);
   };
 
-  const filteredLanguages = ALL_LANGUAGES.filter(lang =>
-    lang.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    lang.code.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  // Restore preferred language on mount if it's a core language
+  // Restore preferred language on mount
   useEffect(() => {
     const savedLang = localStorage.getItem('dara_preferred_lang');
     if (savedLang && CORE_LANGUAGES.some(l => l.code === savedLang)) {
-      // Only apply if it's different and no google translate is active
-      if (i18n.language !== savedLang && !document.cookie.includes('googtrans=')) {
+      if (i18n.language !== savedLang) {
         i18n.changeLanguage(savedLang);
-        setCurrentLang(savedLang);
       }
     }
   }, []);
@@ -237,46 +95,21 @@ const Navbar: React.FC<NavbarProps> = ({ variant = 'dark' }) => {
             </button>
 
             {isLangMenuOpen && (
-              <div className="absolute right-0 mt-2 w-64 bg-surface border border-white/10 rounded-xl shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 flex flex-col max-h-[80vh]">
-
-                {/* Search Input */}
-                <div className="p-3 border-b border-white/10 sticky top-0 bg-surface z-10">
-                  <div className="relative">
-                    <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-textMuted" />
-                    <input
-                      type="text"
-                      placeholder="Search language..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg pl-9 pr-3 py-2 text-sm text-white focus:outline-none focus:border-accent transition-colors placeholder:text-textMuted"
-                      autoFocus
-                    />
-                  </div>
-                </div>
-
+              <div className="absolute right-0 mt-2 w-48 bg-surface border border-white/10 rounded-xl shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 flex flex-col">
                 {/* Language List */}
-                <div className="overflow-y-auto">
-                  {filteredLanguages.length > 0 ? (
-                    filteredLanguages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => toggleLanguage(lang.code)}
-                        className={`w-full text-left px-4 py-3 text-sm flex items-center justify-between hover:bg-white/5 transition-colors ${currentLang === lang.code ? 'text-accent font-bold' : 'text-textMuted'
-                          }`}
-                      >
-                        {lang.label}
-                        {currentLang === lang.code && <Check className="w-3 h-3" />}
-                      </button>
-                    ))
-                  ) : (
-                    <div className="p-4 text-center text-textMuted text-sm">
-                      No languages found
-                    </div>
-                  )}
+                <div className="py-2">
+                  {CORE_LANGUAGES.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => toggleLanguage(lang.code)}
+                      className={`w-full text-left px-4 py-3 text-sm flex items-center justify-between hover:bg-white/5 transition-colors ${i18n.language === lang.code ? 'text-accent font-bold' : 'text-textMuted'
+                        }`}
+                    >
+                      {lang.label}
+                      {i18n.language === lang.code && <Check className="w-3 h-3" />}
+                    </button>
+                  ))}
                 </div>
-
-                {/* Hidden Google Translate Element */}
-                <div id="google_translate_element" className="hidden absolute" />
               </div>
             )}
           </div>
@@ -293,11 +126,65 @@ const Navbar: React.FC<NavbarProps> = ({ variant = 'dark' }) => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className={`fixed inset-0 top-0 z-40 flex flex-col items-center justify-center space-y-8 animate-in slide-in-from-top-10 duration-300 md:hidden ${variant === 'light' ? 'bg-white' : 'bg-background'}`}>
-          <Link to="/" className={`text-xl font-bold hover:text-accent ${variant === 'light' ? 'text-slate-900' : 'text-white'}`}>{t('navbar.home')}</Link>
-          <Link to="/camere" className={`text-xl font-bold hover:text-accent ${variant === 'light' ? 'text-slate-900' : 'text-white'}`}>{t('navbar.rooms')}</Link>
-          <Link to="/galleria" className={`text-xl font-bold hover:text-accent ${variant === 'light' ? 'text-slate-900' : 'text-white'}`}>{t('navbar.gallery')}</Link>
-          <Link to="/contatti" className={`text-xl font-bold hover:text-accent ${variant === 'light' ? 'text-slate-900' : 'text-white'}`}>{t('navbar.contacts')}</Link>
+        <div className={`fixed inset-0 top-0 z-40 flex flex-col pt-24 pb-8 px-6 animate-in slide-in-from-top-0 duration-300 md:hidden ${variant === 'light' ? 'bg-white/95 backdrop-blur-xl' : 'bg-black/95 backdrop-blur-xl'}`}>
+
+          <div className="flex flex-col space-y-2 w-full max-w-md mx-auto">
+            <Link
+              to="/"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`flex items-center justify-between p-5 rounded-2xl transition-all active:scale-[0.98] shadow-sm ${variant === 'light' ? 'bg-slate-50 text-slate-900 border border-slate-200' : 'bg-zinc-900 text-white border border-white/10'}`}
+            >
+              <div className="flex items-center gap-4">
+                <div className={`p-2 rounded-xl ${variant === 'light' ? 'bg-slate-200' : 'bg-white/10'}`}>
+                  <Home className="w-5 h-5" />
+                </div>
+                <span className="text-lg font-bold">{t('navbar.home')}</span>
+              </div>
+              <ChevronRight className={`w-5 h-5 ${variant === 'light' ? 'text-slate-400' : 'text-white/40'}`} />
+            </Link>
+
+            <Link
+              to="/camere"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`flex items-center justify-between p-5 rounded-2xl transition-all active:scale-[0.98] shadow-sm ${variant === 'light' ? 'bg-slate-50 text-slate-900 border border-slate-200' : 'bg-zinc-900 text-white border border-white/10'}`}
+            >
+              <div className="flex items-center gap-4">
+                <div className={`p-2 rounded-xl ${variant === 'light' ? 'bg-slate-200' : 'bg-white/10'}`}>
+                  <BedDouble className="w-5 h-5" />
+                </div>
+                <span className="text-lg font-bold">{t('navbar.rooms')}</span>
+              </div>
+              <ChevronRight className={`w-5 h-5 ${variant === 'light' ? 'text-slate-400' : 'text-white/40'}`} />
+            </Link>
+
+            <Link
+              to="/galleria"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`flex items-center justify-between p-5 rounded-2xl transition-all active:scale-[0.98] shadow-sm ${variant === 'light' ? 'bg-slate-50 text-slate-900 border border-slate-200' : 'bg-zinc-900 text-white border border-white/10'}`}
+            >
+              <div className="flex items-center gap-4">
+                <div className={`p-2 rounded-xl ${variant === 'light' ? 'bg-slate-200' : 'bg-white/10'}`}>
+                  <Image className="w-5 h-5" />
+                </div>
+                <span className="text-lg font-bold">{t('navbar.gallery')}</span>
+              </div>
+              <ChevronRight className={`w-5 h-5 ${variant === 'light' ? 'text-slate-400' : 'text-white/40'}`} />
+            </Link>
+
+            <Link
+              to="/contatti"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`flex items-center justify-between p-5 rounded-2xl transition-all active:scale-[0.98] shadow-sm ${variant === 'light' ? 'bg-slate-50 text-slate-900 border border-slate-200' : 'bg-zinc-900 text-white border border-white/10'}`}
+            >
+              <div className="flex items-center gap-4">
+                <div className={`p-2 rounded-xl ${variant === 'light' ? 'bg-slate-200' : 'bg-white/10'}`}>
+                  <Phone className="w-5 h-5" />
+                </div>
+                <span className="text-lg font-bold">{t('navbar.contacts')}</span>
+              </div>
+              <ChevronRight className={`w-5 h-5 ${variant === 'light' ? 'text-slate-400' : 'text-white/40'}`} />
+            </Link>
+          </div>
         </div>
       )}
     </nav>
