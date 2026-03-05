@@ -18,6 +18,8 @@ const Rooms: React.FC = () => {
         <img
           src="/images/rooms-bg.jpg"
           alt="Marsala Windmills Sunset"
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-white/70" />

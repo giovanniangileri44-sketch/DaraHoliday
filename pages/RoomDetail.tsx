@@ -94,7 +94,7 @@ const RoomDetail: React.FC = () => {
                         {/* Prev Button */}
                         <button
                             onClick={showPrevImage}
-                            className="absolute left-4 md:left-8 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white transition-colors border border-white/10"
+                            className="absolute left-4 md:left-8 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white transition-colors border border-white/10 z-50"
                         >
                             <ChevronLeft className="w-8 h-8" />
                         </button>
@@ -102,7 +102,7 @@ const RoomDetail: React.FC = () => {
                         {/* Next Button */}
                         <button
                             onClick={showNextImage}
-                            className="absolute right-4 md:right-8 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white transition-colors border border-white/10"
+                            className="absolute right-4 md:right-8 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white transition-colors border border-white/10 z-50"
                         >
                             <ChevronRight className="w-8 h-8" />
                         </button>
@@ -146,12 +146,15 @@ const RoomDetail: React.FC = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 1.5 }}
+                        transition={{ duration: 0.8 }}
                         className="absolute inset-0 z-0"
+                        style={{ willChange: 'opacity' }}
                     >
                         <img
                             src={sliderImages[currentImage]}
                             alt={`${room.name} view ${currentImage + 1}`}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover transition-transform duration-[10s] ease-linear scale-100 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-500" />

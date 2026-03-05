@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Mail, Phone, Instagram, Facebook } from 'lucide-react';
+import { Mail, Phone, Instagram, Facebook } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Navbar from '../components/Navbar';
 
 const Contacts: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -43,17 +44,10 @@ const Contacts: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/50 to-white/80" />
       </div>
 
-      {/* Header */}
-      <div className="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-gray-700 hover:text-[#D4AF37] transition-colors">
-            <ArrowLeft size={20} />
-            <span>Torna alla home</span>
-          </Link>
-        </div>
-      </div>
+      {/* Navigation */}
+      <Navbar variant="light" />
 
-      <div className="relative z-10 pt-12 px-6 pb-20 max-w-7xl mx-auto">
+      <div className="relative z-10 pt-32 px-6 pb-20 max-w-7xl mx-auto">
 
         {/* Titolo */}
         <motion.div
@@ -107,10 +101,10 @@ const Contacts: React.FC = () => {
                 <p className="text-sm text-gray-500 mb-4">Chiamaci direttamente</p>
               </div>
               <a
-                href="tel:+393773171447"
+                href="tel:+393208642546"
                 className="w-full bg-[#D4AF37] hover:bg-[#b5952f] text-white font-semibold py-3 rounded-lg transition-colors"
               >
-                +39 377 317 1447
+                +39 320 864 2546
               </a>
             </div>
           </div>
@@ -188,7 +182,7 @@ const Contacts: React.FC = () => {
                   value={formData.nome}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#D4AF37] transition-colors"
+                  className="w-full px-4 py-3 text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-[#D4AF37] transition-colors"
                   placeholder="Il tuo nome"
                 />
               </div>
@@ -202,7 +196,7 @@ const Contacts: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#D4AF37] transition-colors"
+                  className="w-full px-4 py-3 text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-[#D4AF37] transition-colors"
                   placeholder="tua@email.com"
                 />
               </div>
@@ -215,7 +209,7 @@ const Contacts: React.FC = () => {
                   name="telefono"
                   value={formData.telefono}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#D4AF37] transition-colors"
+                  className="w-full px-4 py-3 text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-[#D4AF37] transition-colors"
                   placeholder="+39 XXX XXXX XXX"
                 />
               </div>
@@ -229,7 +223,7 @@ const Contacts: React.FC = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#D4AF37] transition-colors resize-none"
+                  className="w-full px-4 py-3 text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-[#D4AF37] transition-colors resize-none"
                   placeholder="Scrivi il tuo messaggio..."
                 ></textarea>
               </div>

@@ -51,15 +51,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
         </p>
 
         <div className="flex gap-2 md:gap-4 mt-1 md:mt-2 border-t border-white/5 pt-2 md:pt-4">
-          {/* Book Button */}
-          <a
-            href="https://direct-book.com/properties/daraholidayapartments"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-accent hover:bg-[#bfa030] text-white text-[10px] md:text-sm font-medium px-2 py-1 md:px-4 md:py-2 rounded-full transition-colors"
-          >
-            {t('translation:navbar.book')}
-          </a>
+
 
           <Link to={`/room/${room.id}`} className="ml-auto text-[10px] md:text-sm font-medium text-accent hover:underline flex items-center gap-1">
             Dettagli <ArrowRight className="w-3 h-3 md:w-3 md:h-3" />

@@ -47,6 +47,7 @@ const Home: React.FC = () => {
             muted
             playsInline
             className="w-full h-full object-cover opacity-80 scale-[1.25]"
+            style={{ willChange: 'transform' }}
           >
             <source src="/videos/marsala/hero.mp4" type="video/mp4" />
           </video>
@@ -108,13 +109,16 @@ const Home: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 0.8 }}
             className="absolute inset-0 z-0"
+            style={{ willChange: 'opacity' }}
           >
             <img
               src={welcomeImages[currentImage]}
               alt="Marsala Views"
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-black/40" />
           </motion.div>
